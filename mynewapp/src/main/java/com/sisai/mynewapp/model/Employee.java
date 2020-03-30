@@ -1,6 +1,6 @@
 package com.sisai.mynewapp.model;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank; 
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
