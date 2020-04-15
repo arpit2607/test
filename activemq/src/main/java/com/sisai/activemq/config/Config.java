@@ -1,7 +1,7 @@
-package com.sisai.mynewapp.config;
+package com.sisai.activemq.config;
 
+import javax.jms.Topic;
 
-import javax.jms.Topic;  
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,22 +11,21 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
-
 @EnableJms
 @Configuration
 public class Config {
-	
+
 	@Value("${activemq.broker-url}")
 	private String brokerUrl;
 	
 	@Bean
 	public Topic topic() {
-		return new ActiveMQTopic("STVOM-4f7788");
+		return new ActiveMQTopic("STVOM");
 	}
 	
 	@Bean
 	public ActiveMQConnectionFactory activeMQConnectionFactory() {
-		ActiveMQConnectionFactory factory= new ActiveMQConnectionFactory();
+		ActiveMQConnectionFactory factory=new ActiveMQConnectionFactory();
 		factory.setBrokerURL(brokerUrl);
 		return factory;
 	}
@@ -37,7 +36,7 @@ public class Config {
 		jmstemplate.setPubSubDomain(true);
 		return new JmsTemplate(activeMQConnectionFactory());
 	}
-		
+	
 	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
 	    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
@@ -46,4 +45,5 @@ public class Config {
 	    factory.setPubSubDomain(true);
 	    return factory;
 	}
+	
 }

@@ -1,10 +1,10 @@
-package com.sisai.mynewapp;
+package com.sisai.activemq;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MynewappApplicationTests {
+class ActivemqApplicationTests {
 
 	@Test
 	void contextLoads() {
